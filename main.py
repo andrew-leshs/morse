@@ -1,3 +1,9 @@
+import logging
+import time
+import webbrowser
+
+from pyfiglet import Figlet
+
 from logic import Logic
 from flask import Flask, render_template, request
 from turbo_flask import Turbo
@@ -33,4 +39,10 @@ def decode():
 
 
 if __name__ == '__main__':
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
+    text = Figlet(font="digital")
+    print(text.renderText("MORSE"))
+    time.sleep(1)
+    webbrowser.open("http://127.0.0.1:5000")
     app.run()
